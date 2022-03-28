@@ -17,7 +17,7 @@ namespace MailTesting.WebObjects
         private readonly BaseElement _profileButton = new BaseElement(By.ClassName("rui__2FTrL"));
         private readonly BaseElement _logOutButton = new BaseElement(By.XPath("//button[@class='rui__1iR9f']"));
         private readonly BaseElement _draftsButton = new BaseElement(By.XPath("//span[.='Черновики']"));
-        private readonly BaseElement _draftButton = new BaseElement(By.XPath($"//span[.='{Subject}']"));
+        private readonly BaseElement _draftButton = new BaseElement(By.XPath($"//span[text()='{Subject}']"));
         private readonly BaseElement _deleteButton = new BaseElement(By.XPath("//div[@data-list-view='letter::trash']"));
 
         private readonly BaseElement _receiverInput = new BaseElement(By.Id("receivers"));
@@ -43,14 +43,9 @@ namespace MailTesting.WebObjects
             _logOutButton.Click();
         }
 
-        public bool CheckDraft()
-        {
-            _draftsButton.Click();
-            return _draftButton.Text == Subject;
-        }
-
         public void DeleteDraft()
         {
+            _draftsButton.Click();
             _draftButton.Click();
             _deleteButton.Click();
         }

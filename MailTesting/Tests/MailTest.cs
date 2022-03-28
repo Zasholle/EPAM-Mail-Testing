@@ -28,8 +28,7 @@ namespace MailTesting.Tests
 
             _mailBoxPage = new MailBoxPage();
 
-            if (_mailBoxPage.CheckDraft())
-                _mailBoxPage.DeleteDraft();
+            _mailBoxPage.DeleteDraft();
 
             _mailBoxPage.LogOut();
         }
