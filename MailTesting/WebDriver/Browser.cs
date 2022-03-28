@@ -15,7 +15,7 @@ namespace MailTesting.WebDriver
         private Browser()
         {
             InitParams();
-            BrowserFactory.GetDriver(CurrentBrowser, Wait);
+            _driver = BrowserFactory.GetDriver(CurrentBrowser, Wait);
         }
 
         private static void InitParams()
@@ -26,7 +26,7 @@ namespace MailTesting.WebDriver
             Enum.TryParse(_browser, out CurrentBrowser);
         }
 
-        public static Browser GetInstance() => _instance ?? (_instance = new Browser());
+        public static Browser Instance => _instance ?? (_instance = new Browser());
 
         public static void WindowMaximize()
         {

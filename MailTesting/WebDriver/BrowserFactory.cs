@@ -19,7 +19,7 @@ namespace MailTesting.WebDriver
 
         public static IWebDriver GetDriver(BrowserType type, int timeoutSec)
         {
-            IWebDriver driver = null;
+            IWebDriver driver;
 
             switch (type)
             {

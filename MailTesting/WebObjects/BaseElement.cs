@@ -20,6 +20,11 @@ namespace MailTesting.WebObjects
             Name = name == "" ? GetText() : name;
         }
 
+        public BaseElement(By locator)
+        {
+            Locator = locator;
+        }
+
         public string GetText()
         {
             WaitForIsVisible();
@@ -41,7 +46,7 @@ namespace MailTesting.WebObjects
 
         public void WaitForIsVisible()
         {
-            var wait = new WebDriverWait(_driver, new TimeSpan(0,0,30));
+            var wait = new WebDriverWait(_driver, new TimeSpan(0,0,2));
 
             wait.Until(condition =>
             {
