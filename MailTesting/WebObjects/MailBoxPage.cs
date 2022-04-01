@@ -1,4 +1,6 @@
-﻿using MailTesting.Entities;
+﻿using System;
+using System.Threading;
+using MailTesting.Entities;
 using MailTesting.WebDriver;
 using OpenQA.Selenium;
 
@@ -22,6 +24,17 @@ namespace MailTesting.WebObjects
         private readonly BaseElement _textInput = new BaseElement(By.XPath("//body[@id='tinymce']//div"));
         
         private readonly BaseElement _searchFrame = new BaseElement(By.Id("editor_ifr"));
+
+        private readonly BaseElement _draftsCount =
+            new BaseElement(By.XPath("//div[@class='FoldersItem-right-2G']/div[2]"));
+
+        public int GetDraftsCount()
+        {
+            Thread.Sleep(1000);
+
+            int.TryParse(_draftsCount.GetText(), out var res);
+            return res;
+        }
 
         public void CreateMessage(Letter letter)
         {

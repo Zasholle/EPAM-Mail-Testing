@@ -20,7 +20,13 @@ namespace MailTesting.Tests
             _homePage.SignIn(InitUser());
 
             _mailBoxPage = new MailBoxPage();
+
+            var expect = _mailBoxPage.GetDraftsCount() + 1;
+
             _mailBoxPage.CreateMessage(InitLetter());
+
+            Assert.AreEqual(expect, _mailBoxPage.GetDraftsCount());
+
             _mailBoxPage.LogOut();
         }
 
@@ -36,7 +42,11 @@ namespace MailTesting.Tests
 
             _mailBoxPage = new MailBoxPage();
 
+            var expect = _mailBoxPage.GetDraftsCount() - 1;
+
             _mailBoxPage.DeleteDraft(subject);
+
+            Assert.AreEqual(expect, _mailBoxPage.GetDraftsCount());
 
             _mailBoxPage.LogOut();
         }

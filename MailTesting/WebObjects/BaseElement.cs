@@ -28,7 +28,7 @@ namespace MailTesting.WebObjects
         public string GetText()
         {
             WaitForIsVisible();
-            return Element.Text;
+            return _driver.FindElement(Locator).Text;
         }
 
         public IWebElement GetElement()
@@ -46,7 +46,7 @@ namespace MailTesting.WebObjects
 
         public void WaitForIsVisible()
         {
-            var wait = new WebDriverWait(_driver, new TimeSpan(0,0,2));
+            var wait = new WebDriverWait(_driver, new TimeSpan(0,0,5));
 
             wait.Until(condition =>
             {
