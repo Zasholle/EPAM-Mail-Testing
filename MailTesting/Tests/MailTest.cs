@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MailTesting.Tests
 {
-    [DeploymentItem(@"Resources")]
     [TestClass]
     public class MailTest : BaseTest
     {
@@ -12,7 +11,7 @@ namespace MailTesting.Tests
         private MailBoxPage _mailBoxPage;
 
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-            "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
+            "Resources\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
         public void MessageCreationTest()
         {
@@ -31,7 +30,7 @@ namespace MailTesting.Tests
         }
 
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV",
-            "|DataDirectory|\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
+            "Resources\\TestData.csv", "TestData#csv", DataAccessMethod.Sequential)]
         [TestMethod]
         public void DraftDeletionTest()
         {
