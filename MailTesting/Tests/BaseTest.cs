@@ -8,6 +8,8 @@ namespace MailTesting.Tests
     {
         protected static Browser Browser = Browser.Instance;
 
+        public TestContext TestContext { get; set; }
+
         [TestInitialize]
         public virtual void InitTest()
         {
